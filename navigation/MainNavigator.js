@@ -3,9 +3,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import ChatListScreen from "../screens/ChatListScreen";
 import ChatSettingsScreen from "../screens/ChatSettingsScreen";
-import { StringConstant } from "./utils/constants/constants";
+import { StringConstant } from "../utils/constants/constants";
 import SettingsScreen from "../screens/SettingsScreen";
 import { Ionicons } from "@expo/vector-icons";
+import ChatScreen from "../screens/ChatScreen";
 
 
 
@@ -21,8 +22,8 @@ const TabNavigator = () => {
       }}
     >
       <Tab.Screen
-        name={StringConstant.CHAT_LIST_SCREEN}
-        component={ChatListScreen}
+        name={StringConstant.CHAT_SCREEN}
+        component={ChatScreen}
         options={{
           tabBarLabel: "Chats",
           tabBarIcon: ({ color, size }) => (
@@ -56,6 +57,16 @@ const MainNavigator = (props) => {
         <AppStack.Screen
           name={StringConstant.CHAT_SETTINGS_SCREEN}
           component={ChatSettingsScreen}
+          options={{
+            gestureEnabled: true,
+            headerTitle: "Settings",
+            headerBackTitle: "Back",
+            headerShadowVisible: true,
+          }}
+        />
+        <AppStack.Screen
+          name={StringConstant.CHAT_SCREEN}
+          component={ChatScreen}
           options={{
             gestureEnabled: true,
             headerTitle: "Settings",
