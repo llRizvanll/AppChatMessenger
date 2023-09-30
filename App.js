@@ -20,14 +20,24 @@ const Tab = createBottomTabNavigator();
 //Tab Navigation
 const TabNavigator = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerTitle: "",
+      }}
+    >
       <Tab.Screen
         name={StringConstant.CHAT_LIST_SCREEN}
         component={ChatListScreen}
+        options={{
+          tabBarLabel:'Chats'
+        }}
       />
       <Tab.Screen
         name={StringConstant.SETTINGS_SCREEN}
         component={SettingsScreen}
+        options={{
+          tabBarLabel:'Settings'
+        }}
       />
     </Tab.Navigator>
   );
@@ -85,6 +95,9 @@ export default function App() {
           <AppStack.Screen
             name={StringConstant.HOME}
             component={TabNavigator}
+            options={{
+              headerShown: false,
+            }}
           />
           <AppStack.Screen
             name={StringConstant.CHAT_SETTINGS_SCREEN}
