@@ -5,16 +5,35 @@ import * as SplashScreen from "expo-splash-screen";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useCallback, useEffect, useState } from "react";
 import * as Font from "expo-font";
-import { NavigationContainer, Stac } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import ChatListScreen from "./screens/ChatListScreen";
 import ChatSettingsScreen from "./screens/ChatSettingsScreen";
 import { StringConstant } from "./utils/constants/constants";
+import SettingsScreen from "./screens/SettingsScreen";
 
 SplashScreen.preventAutoHideAsync();
+const AppStack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+//Tab Navigation
+const TabNavigator = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name={StringConstant.CHAT_LIST_SCREEN}
+        component={ChatListScreen}
+      />
+      <Tab.Screen
+        name={StringConstant.SETTINGS_SCREEN}
+        component={SettingsScreen}
+      />
+    </Tab.Navigator>
+  );
+};
 export default function App() {
   const [appIsLoaded, setAppIsLoaded] = useState(false);
-  const AppStack = createStackNavigator();
 
   useEffect(() => {
     const prepareFonts = async () => {
@@ -61,17 +80,24 @@ export default function App() {
 
   return (
     <SafeAreaProvider onLayout={onLayout}>
-      
-        <NavigationContainer>
-
-          <AppStack.Navigator>
-            <AppStack.Screen name={StringConstant.HOME} component={ChatListScreen}/>
-            <AppStack.Screen name={StringConstant.CHAT_SETTINGS_SCREEN} component={ChatSettingsScreen}/>
-          </AppStack.Navigator>
-
-
-        </NavigationContainer>
-      
+      <NavigationContainer>
+        <AppStack.Navigator>
+          <AppStack.Screen
+            name={StringConstant.HOME}
+            component={TabNavigator}
+          />
+          <AppStack.Screen
+            name={StringConstant.CHAT_SETTINGS_SCREEN}
+            component={ChatSettingsScreen}
+            options={{
+              gestureEnabled: true,
+              headerTitle: "Settings",
+              headerBackTitle: "Back",
+              headerShadowVisible: true,
+            }}
+          />
+        </AppStack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
