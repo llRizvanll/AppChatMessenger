@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import "react-native-gesture-handler";
 import { StyleSheet, Text, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
@@ -12,6 +11,7 @@ import ChatListScreen from "./screens/ChatListScreen";
 import ChatSettingsScreen from "./screens/ChatSettingsScreen";
 import { StringConstant } from "./utils/constants/constants";
 import SettingsScreen from "./screens/SettingsScreen";
+import { Ionicons } from "@expo/vector-icons";
 
 SplashScreen.preventAutoHideAsync();
 const AppStack = createStackNavigator();
@@ -29,14 +29,17 @@ const TabNavigator = () => {
         name={StringConstant.CHAT_LIST_SCREEN}
         component={ChatListScreen}
         options={{
-          tabBarLabel:'Chats'
+          tabBarLabel:'Chats',
+          tabBarIcon: () =>  <Ionicons name="chatbubble-outline" size={24} color="black"/>
         }}
+        
       />
       <Tab.Screen
         name={StringConstant.SETTINGS_SCREEN}
         component={SettingsScreen}
         options={{
-          tabBarLabel:'Settings'
+          tabBarLabel:'Settings',
+          tabBarIcon: () =>  <Ionicons name="settings-outline" size={24} color="black"/>
         }}
       />
     </Tab.Navigator>
