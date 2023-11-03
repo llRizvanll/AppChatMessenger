@@ -9,4 +9,5 @@ export const StringConstant = {
 export const Colors = {
     lightblue:'#0080FB',
     meta_gray:'#1C2B33',
+    white:'#fff'
 }
