@@ -1,29 +1,71 @@
 import React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
-import { StringConstant } from "../utils/constants/constants";
+import {
+  Button,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { ImagesRef } from "../config/ImagesRef";
+import { TextInput } from "react-native-gesture-handler";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons, Feather } from "@expo/vector-icons";
+import { Colors } from "../utils/constants/constants";
 
+const ChatScreen = (props) => {
+  return (
+    <SafeAreaView edges={["right", "left", "bottom"]} style={styles.container}>
+      <ImageBackground
+        source={ImagesRef.chat_background}
+        style={styles.backgroundImage}
+      />
 
-const ChatScreen = props => {
-    return(
-        <View style={styles.container}>
-            <Text> Chat Screen </Text>
-            <Button title="Go to settings " onPress={() => {
-                props.navigation.navigate(StringConstant.CHAT_SETTINGS_SCREEN)
-            }}/>
-        </View>
-    )
-}
+      <View style={styles.inputBottomContainer}>
+        <TouchableOpacity onPress={() => {}} style={styles.attachButton}>
+          <Ionicons name="attach" size={24} color={Colors.lightblue} />
+        </TouchableOpacity>
+        <TextInput placeholder={"Enter text to send"} style={styles.textInputStyle}></TextInput>
+        <TouchableOpacity onPress={() => {}} style={styles.cameraButton}>
+          <Feather name="camera" size={24} color={Colors.lightblue} />
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+};
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent:"center",
-      alignItems:'center'
-    },
-    textStyle: {
-      fontFamily: "black",
-    },
-  });
+  container: {
+    flex: 1,
+    flexDirection: "column",
+  },
+  backgroundImage: {
+    flex: 1,
+  },
+  textInputStyle:{
+    flex:1,
+    borderWidth:1,
+    borderRadius:50,
+    borderColor:Colors.meta_gray,
+    paddingHorizontal:15,
+    marginHorizontal:15,
+  },
+  attachButton:{
+    alignItems:'center',
+    justifyContent:'center',
+    width:35,
+  },  
+  cameraButton:{
+    alignItems:'center',
+    justifyContent:'center',
+    width:35,
+  },
+  inputBottomContainer: {
+    flexDirection: "row",
+    alignItems:'center',
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    height: 60,
+  },
+});
 
-  
 export default ChatScreen;
-

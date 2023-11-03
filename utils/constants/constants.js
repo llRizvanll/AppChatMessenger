@@ -5,3 +5,8 @@ export const StringConstant = {
     CHAT_SETTINGS_SCREEN : 'ChatSettingsScreen',
     SETTINGS_SCREEN : "SettingsScreen"
 }
+
+export const Colors = {
+    lightblue:'#0080FB',
+    meta_gray:'#1C2B33',
+}

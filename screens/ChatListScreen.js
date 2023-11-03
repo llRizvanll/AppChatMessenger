@@ -7,8 +7,8 @@ const ChatListScreen = props => {
     return(
         <View style={styles.container}>
             <Text> ChatListScreen </Text>
-            <Button title="Go to settings " onPress={() => {
-                props.navigation.navigate(StringConstant.CHAT_SETTINGS_SCREEN)
+            <Button title="Go to Chat Screen" onPress={() => {
+                props.navigation.navigate(StringConstant.CHAT_SCREEN)
             }}/>
         </View>
     )
