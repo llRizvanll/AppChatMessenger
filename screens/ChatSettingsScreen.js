@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 const ChatSettingsScreen = props => {
     return(
         <View style={styles.container}>
-            <Text> ChatListScreen </Text>
+            <Text> Chat Settings Screen </Text>
         </View>
     )
 }
