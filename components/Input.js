@@ -2,6 +2,10 @@ import { StyleSheet, TextInput, View, Text } from "react-native";
 import { Colors } from "../utils/constants/constants";
 
 export const InputTextView = (props) => {
+    const onChangeText = text => {
+      console.log('input change ', props.id,' --- ',text);
+        props.onInputChanged(props.id, text);
+    }
   return (
     <View styles={styles.container}>
       <Text style={styles.label}>{props.label}</Text>
@@ -13,12 +17,14 @@ export const InputTextView = (props) => {
             style={styles.iconStyle}
           />
         )}
-        <TextInput style={styles.textInputStyle} />
+        <TextInput {...props} style={styles.textInputStyle} onChangeText={onChangeText}/>
       </View>
 
       {props.errorText && (
         <View style={styles.errorContainer}>
-          <Text style={styles.errorText}>{props.errorText}</Text>
+          <Text style={styles.errorText}
+            
+          >{props.errorText[0]}</Text>
         </View>
       )}
     </View>
@@ -54,7 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: "regular",
     letterSpacing: 0.3,
-    paddingTop: 10,
   },
   errorContainer: {
     marginVertical: 5,

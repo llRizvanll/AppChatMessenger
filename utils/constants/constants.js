@@ -16,5 +16,6 @@ export const Colors = {
     red:'red',
     primary:'#0668E1',
     secondary:'#0080FB',
+    black:'#000'
 
 }

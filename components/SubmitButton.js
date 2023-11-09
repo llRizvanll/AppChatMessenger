@@ -6,7 +6,7 @@ export const SubmitButton = (props) => {
     const enabledBgColor = props.color || Colors.primary;
     const disabledBgColor = Colors.grey;
     const bgColor = props?.disabled ? disabledBgColor: enabledBgColor;
-    const btnTextColor = props.disabled ? Colors.grey:Colors.nearlyWhite;
+    const btnTextColor = props.disabled ? Colors.black:Colors.nearlyWhite;
 
   return (
   <TouchableOpacity 
