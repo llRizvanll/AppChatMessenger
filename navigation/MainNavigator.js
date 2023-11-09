@@ -55,21 +55,21 @@ const MainNavigator = (props) => {
           }}
         />
         <AppStack.Screen
-          name={StringConstant.CHAT_SETTINGS_SCREEN}
-          component={ChatSettingsScreen}
+          name={StringConstant.CHAT_SCREEN}
+          component={ChatScreen}
           options={{
             gestureEnabled: true,
-            headerTitle: "Settings",
+            headerTitle: StringConstant.CHAT_SCREEN,
             headerBackTitle: "Back",
             headerShadowVisible: true,
           }}
         />
         <AppStack.Screen
-          name={StringConstant.CHAT_SCREEN}
-          component={ChatScreen}
+          name={StringConstant.CHAT_SETTINGS_SCREEN}
+          component={ChatSettingsScreen}
           options={{
             gestureEnabled: true,
-            headerTitle: "Settings",
+            headerTitle: "ChatSettings",
             headerBackTitle: "Back",
             headerShadowVisible: true,
           }}
